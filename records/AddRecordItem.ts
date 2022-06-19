@@ -1,6 +1,6 @@
-import {AdEntityItem} from "../../types/AdEntity";
-import {ValidationError} from "../errors";
-import {pool} from "../dbConnection";
+import {AdEntityItem} from "../types/AdEntity";
+import {ValidationError} from "../utils/errors";
+import {pool} from "../utils/dbConnection";
 import {FieldPacket} from "mysql2";
 
 type AdRecordResults = [AdRecordItem[], FieldPacket[]];
