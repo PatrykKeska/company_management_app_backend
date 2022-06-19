@@ -1,0 +1,10 @@
+{
+  "name": "company_management_app_backend)",
+  "version": "0.1.0",
+  "description": "web app which allow you to manage your company assets etc, using React on Front and MySql database. Project written in BE: Express-TypeScript FE: React TypeScript DB : MYSQL ",
+  "main": "index.js",
+  "repository": "https://github.com/PatrykKeska/company_management_app_backend.git",
+  "author": "Patryk Keska",
+  "license": "free ",
+  "private": false
+}
