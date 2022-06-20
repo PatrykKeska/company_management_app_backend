@@ -9,7 +9,7 @@ export interface AdEntityPlace {
 }
 
 export interface AdEntityItem {
-    id: string;
+    id?: string;
     name: string;
     price: number;
     pieces: number;

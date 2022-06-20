@@ -2,11 +2,12 @@ import {AdEntityItem} from "../types/AdEntity";
 import {ValidationError} from "../utils/errors";
 import {pool} from "../utils/dbConnection";
 import {FieldPacket} from "mysql2";
+import {v4 as uuid} from "uuid";
 
 type AdRecordResults = [AdRecordItem[], FieldPacket[]];
 
 export class AdRecordItem implements AdEntityItem {
-    public id: string;
+    public id?: string;
     public name: string;
     public price: number;
     public pieces: number;
@@ -45,6 +46,22 @@ export class AdRecordItem implements AdEntityItem {
     }
 
 
+    static async insertNewItem(obj: AdRecordItem) {
+        if (!obj.id) {
+            obj.id = uuid();
+        }
+        await pool.execute("INSERT INTO `products` (id,name,price,pieces,dateOfBuy,img) VALUES(:id,:name,:price,:pieces,:dateOfBuy,:img)", {
+            id: obj.id,
+            name: obj.name,
+            price: obj.price,
+            pieces: obj.pieces,
+            dateOfBuy: obj.dateOfBuy,
+            img: obj.img
+        })
+
+    }
+
+
     static async getOneItem(id: string): Promise<AdRecordItem> | null {
 
         const [results] = await pool.execute("SELECT * FROM `products` WHERE id=:id", {
@@ -53,6 +70,15 @@ export class AdRecordItem implements AdEntityItem {
         return results.length === 0 ? null : new AdRecordItem(results[0])
 
     }
+
+    static async filterAllItems(name: string): Promise<AdRecordItem[]> {
+        const [results] = await pool.execute("SELECT * FROM `products` WHERE `name` LIKE :search", {
+            search: `%${name}`
+        }) as AdRecordResults;
+        return results.map(item => new AdRecordItem(item))
+
+    }
+
 
 }
 
