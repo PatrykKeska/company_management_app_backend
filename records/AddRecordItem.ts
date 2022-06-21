@@ -71,6 +71,13 @@ export class AdRecordItem implements AdEntityItem {
 
     }
 
+    static async getAllItems(){
+
+        const [results] = await pool.execute("SELECT * FROM `products`") as AdRecordResults
+        return results.map(item => new AdRecordItem(item))
+
+    }
+
     static async filterAllItems(name: string): Promise<AdRecordItem[]> {
         const [results] = await pool.execute("SELECT * FROM `products` WHERE `name` LIKE :search", {
             search: `%${name}`
