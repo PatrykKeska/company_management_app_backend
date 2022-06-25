@@ -1,9 +1,9 @@
 export interface AdEntityPlace {
-    id: string;
+    id?: string;
     name: string;
     city: string;
     street: string;
-    buildNumber: number;
+    buildNumber: string;
     img?: string;
 
 }
