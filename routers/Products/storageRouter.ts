@@ -1,5 +1,5 @@
 import {Router} from "express";
-import {AdRecordItem} from "../records/AddRecordItem";
+import {AdRecordItem} from "../../records/AddRecordItem";
 
 
 export const storageRouter = Router()
