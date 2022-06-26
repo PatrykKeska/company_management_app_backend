@@ -6,6 +6,7 @@ import {FieldPacket} from "mysql2";
 
 type AdRecordPlaceResults = [AddRecordPlace[], FieldPacket[]];
 
+
 export class AddRecordPlace implements AdEntityPlace {
     id: string;
     name: string;
@@ -33,8 +34,8 @@ export class AddRecordPlace implements AdEntityPlace {
         if (!obj.buildNumber || obj.buildNumber.length > 20) {
             throw new ValidationError("build name of the place can't be longer than 20 or less than 3 characters ")
         }
-        if (obj.img.length > 100) {
-            throw new ValidationError("img link of the place can't be longer than 100 characters")
+        if (obj.img.length > 200) {
+            throw new ValidationError("img link of the place can't be longer than 200 characters")
         }
 
         this.id = obj.id;
@@ -51,6 +52,13 @@ export class AddRecordPlace implements AdEntityPlace {
         return results.map(place => new AddRecordPlace(place as AdEntityPlace))
     }
 
+    static async getOnePlace(id: string): Promise<AddRecordPlace> | null {
+        const [result] = await pool.execute("SELECT * FROM `places` WHERE `id`= :id", {
+            id
+        }) as AdRecordPlaceResults
+        return result.length > 0 ? new AddRecordPlace(result[0]) : null
+    }
+
     async insertNewPlace() {
         await pool.execute("INSERT INTO `places`(id,name,city,street,buildNumber,img) VALUES(:id,:name,:city,:street,:buildNumber,:img)", {
             id: this.id,
@@ -60,6 +68,25 @@ export class AddRecordPlace implements AdEntityPlace {
             buildNumber: this.buildNumber,
             img: this.img,
 
+        })
+    }
+
+    static async updatePlace(obj: AddRecordPlace) {
+        await pool.execute("UPDATE `places`  SET name =:name, city= :city, street=:street, buildNumber= :buildNumber, img= :img WHERE id = :id", {
+            id: obj.id,
+            name: obj.name,
+            city: obj.city,
+            street: obj.street,
+            buildNumber: obj.buildNumber,
+            img: obj.img,
+
+        })
+    }
+
+    static async deletePlace(id: string) {
+
+        await pool.execute("DELETE FROM `places` WHERE id=:id", {
+            id
         })
     }
 }
