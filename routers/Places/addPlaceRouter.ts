@@ -15,8 +15,18 @@ export const addPlaceRouter = Router()
 
     .post('/add-new-place', async (req, res) => {
         const {name, city, street, buildNumber, img} = req.body as AdEntityPlace
-        const newPlace = new AddRecordPlace({name,city,street,buildNumber,img});
+        const newPlace = new AddRecordPlace({name, city, street, buildNumber, img});
         await console.log(newPlace)
         newPlace.insertNewPlace()
 
+    })
+
+
+    .patch('/places/update', async (req, res) => {
+        const data = await AddRecordPlace.updatePlace(req.body)
+    })
+
+    .delete('/places/delete', async (req, res) => {
+        const {id} = req.body
+        await AddRecordPlace.deletePlace(id)
     })
