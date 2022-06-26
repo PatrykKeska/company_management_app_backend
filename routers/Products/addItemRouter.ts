@@ -13,9 +13,9 @@ export const addItemRouter = Router()
 
     .post('/add-new-item', async (req, res) => {
 
-        const {name,price,pieces,dateOfBuy,img} = req.body
+        const {name,price,amount,dateOfBuy,img} = req.body
         console.log(req.body)
-        await AdRecordItem.insertNewItem({name,price,pieces,dateOfBuy,img})
+        await AdRecordItem.insertNewItem({name,price,amount,dateOfBuy,img})
         res.json({
             message: req.body
         })

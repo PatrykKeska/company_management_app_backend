@@ -10,7 +10,7 @@ export class AdRecordItem implements AdEntityItem {
     public id?: string;
     public name: string;
     public price: number;
-    public pieces: number;
+    public amount: number;
     public dateOfBuy: string;
     public img?: string;
 
@@ -25,7 +25,7 @@ export class AdRecordItem implements AdEntityItem {
         if (!obj.price || obj.price <= 0 || obj.price > 999999) {
             throw new ValidationError("price have to greater than 0 and less than 999999")
         }
-        if (!obj.pieces || obj.pieces <= 0 || obj.pieces > 99999) {
+        if (!obj.amount || obj.amount <= 0 || obj.amount > 99999) {
             throw new ValidationError("pieces number have to greater than 0 and less than 99999")
         }
         if (!obj.dateOfBuy) {
@@ -39,7 +39,7 @@ export class AdRecordItem implements AdEntityItem {
         this.id = obj.id;
         this.name = obj.name;
         this.price = obj.price;
-        this.pieces = obj.pieces;
+        this.amount = obj.amount;
         this.dateOfBuy = obj.dateOfBuy;
         this.img = obj.img;
 
@@ -50,11 +50,11 @@ export class AdRecordItem implements AdEntityItem {
         if (!obj.id) {
             obj.id = uuid();
         }
-        await pool.execute("INSERT INTO `products` (id,name,price,pieces,dateOfBuy,img) VALUES(:id,:name,:price,:pieces,:dateOfBuy,:img)", {
+        await pool.execute("INSERT INTO `products` (id,name,price,amount,dateOfBuy,img) VALUES(:id,:name,:price,:amount,:dateOfBuy,:img)", {
             id: obj.id,
             name: obj.name,
             price: obj.price,
-            pieces: obj.pieces,
+            amount: obj.amount,
             dateOfBuy: obj.dateOfBuy,
             img: obj.img
         })

@@ -12,7 +12,7 @@ export interface AdEntityItem {
     id?: string;
     name: string;
     price: number;
-    pieces: number;
+    amount: number;
     dateOfBuy: string;
     img?: string;
 
