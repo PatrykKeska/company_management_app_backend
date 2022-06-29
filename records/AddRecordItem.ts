@@ -32,8 +32,8 @@ export class AdRecordItem implements AdEntityItem {
             throw new ValidationError("Date have to be filled up!")
         }
 
-        if (obj.img.length > 100) {
-            throw new ValidationError("Img src link can't be longer than 100 characters!")
+        if (obj.img.length > 200) {
+            throw new ValidationError("Img src link can't be longer than 200 characters!")
         }
 
         this.id = obj.id;
@@ -85,6 +85,8 @@ export class AdRecordItem implements AdEntityItem {
         return results.map(item => new AdRecordItem(item))
 
     }
+
+    // @TODo Create  methods for handle Update and Delete Item !
 
 
 }
