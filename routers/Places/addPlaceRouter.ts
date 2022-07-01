@@ -16,14 +16,14 @@ export const addPlaceRouter = Router()
     .post('/add-new-place', async (req, res) => {
         const {name, city, street, buildNumber, img} = req.body as AdEntityPlace
         const newPlace = new AddRecordPlace({name, city, street, buildNumber, img});
-        await console.log(newPlace)
         newPlace.insertNewPlace()
 
     })
 
 
     .patch('/places/update', async (req, res) => {
-        const data = await AddRecordPlace.updatePlace(req.body)
+        const {id, name, city, street, buildNumber, img} = req.body as AddRecordPlace
+        await AddRecordPlace.updatePlace({id, name, city, street, buildNumber, img} as AddRecordPlace)
     })
 
     .delete('/places/delete', async (req, res) => {

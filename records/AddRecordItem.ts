@@ -71,7 +71,7 @@ export class AdRecordItem implements AdEntityItem {
 
     }
 
-    static async getAllItems(){
+    static async getAllItems() {
 
         const [results] = await pool.execute("SELECT * FROM `products`") as AdRecordResults
         return results.map(item => new AdRecordItem(item))
@@ -84,6 +84,26 @@ export class AdRecordItem implements AdEntityItem {
         }) as AdRecordResults;
         return results.map(item => new AdRecordItem(item))
 
+    }
+
+    static async updateProduct(obj: AdRecordItem) {
+        await pool.execute("UPDATE `products`  SET name =:name, price= :price, amount=:amount, dateOfBuy= :dateOfBuy, img= :img WHERE id = :id", {
+            id: obj.id,
+            name: obj.name,
+            price: obj.price,
+            amount: obj.amount,
+            dateOfBuy: obj.dateOfBuy,
+            img: obj.img,
+
+        })
+    }
+
+
+    static async deleteProduct(id: string) {
+
+        await pool.execute("DELETE FROM `products` WHERE id=:id", {
+            id
+        })
     }
 
     // @TODo Create  methods for handle Update and Delete Item !

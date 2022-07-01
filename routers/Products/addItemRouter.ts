@@ -13,13 +13,22 @@ export const addItemRouter = Router()
 
     .post('/add-new-item', async (req, res) => {
 
-        const {name,price,amount,dateOfBuy,img} = req.body
-        console.log(req.body)
-        await AdRecordItem.insertNewItem({name,price,amount,dateOfBuy,img})
+        const {name, price, amount, dateOfBuy, img} = req.body
+        await AdRecordItem.insertNewItem({name, price, amount, dateOfBuy, img})
         res.json({
             message: req.body
         })
     })
 
+    .patch('/storage/update', async (req, res) => {
+        const {id, name, price, amount, dateOfBuy, img} = req.body as AdRecordItem
+        const data = await AdRecordItem.updateProduct({id, name, price, amount, dateOfBuy, img})
+    })
 
- // @TODO Create API endpoints for handleSubmit PATCH DELETE  !!!
+    .delete('/storage/delete', async (req, res) => {
+        const {id} = req.body
+        await AdRecordItem.deleteProduct(id)
+    })
+
+
+// @TODO Create API endpoints for handleSubmit PATCH DELETE  !!!
