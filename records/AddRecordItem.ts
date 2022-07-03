@@ -62,12 +62,12 @@ export class AdRecordItem implements AdEntityItem {
     }
 
 
-    static async getOneItem(id: string): Promise<AdRecordItem> | null {
+    static async getOneItem(id: string): Promise<AdRecordItem>{
 
         const [results] = await pool.execute("SELECT * FROM `products` WHERE id=:id", {
             id,
         }) as AdRecordResults
-        return results.length === 0 ? null : new AdRecordItem(results[0])
+        return   new AdRecordItem(results[0])
 
     }
 

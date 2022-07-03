@@ -4,11 +4,13 @@ import {AdRecordItem} from "../../records/AddRecordItem";
 
 export const storageRouter = Router()
     .get('/storage', async (req, res) => {
-        console.log(req.cookies)
         const data = await AdRecordItem.getAllItems();
         const obj = JSON.stringify(data)
         res.json({
             message: data
         })
     })
+
+    
+
 

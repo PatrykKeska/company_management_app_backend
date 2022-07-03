@@ -6,7 +6,7 @@ import {addPlaceRouter} from "./routers/Places/addPlaceRouter";
 import {storageRouter} from "./routers/Products/storageRouter";
 import {placesRouter} from "./routers/Places/placesRouter";
 import {homeRouter} from "./routers/homePage/home.router";
-import {inventoryRouter} from "./routers/inventory/inventory.router";
+import { inventoryRouter } from "./routers/inventory/inventory.router";
 
 const cookieParser = require('cookie-parser')
 
