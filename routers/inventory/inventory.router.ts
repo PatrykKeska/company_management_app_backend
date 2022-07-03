@@ -1,22 +1,15 @@
 import {Router, Request, Response, NextFunction} from 'express';
 import {AddProductToPlace} from '../../records/AddProductToPlace';
+import {AdRecordItem} from '../../records/AddRecordItem';
 
-
-const obj: AddProductToPlace = {
-    place_id: '12213',
-    item_id: '41562',
-    item_amount: 3,
-}
 export const inventoryRouter = Router()
+    .post('/inventory/check', async (req, res) => {
+        console.log(req.body)
+        const {place, items} = req.body
+        
 
-
-    .get('/inventory', async (req, res) => {
-        const response = AddProductToPlace.addNewItem(obj)
-        res.json(response);
+        await AddProductToPlace.addNewItem({
+            item_id: items.id, place_id: place.id, item_amount: items.amount, item_price: items.price,
+        });
     })
 
-
-.post('/inventory', async (req,res)=>{
-    const response = await AddProductToPlace.showItemsInPlace('ea7e9ac8-7ff3-4e3d-b4e0-e72612569be3');
-    res.json(response)
-})

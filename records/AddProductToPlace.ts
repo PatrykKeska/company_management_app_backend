@@ -10,19 +10,24 @@ export class AddProductToPlace implements ProductsInPlaces {
     place_id: string;
     item_id: string;
     item_amount: number;
+    item_price: number;
 
     constructor(obj: ProductsInPlaces) {
 
         this.place_id = obj.place_id;
         this.item_id = obj.item_id;
         this.item_amount = obj.item_amount;
+        this.item_price = obj.item_price;
+        
     }
 
     static async addNewItem(obj: ProductsInPlaces) {
-        await pool.execute("INSERT INTO `places_products`(place_id, item_id, item_amount) VALUES(:place_id, :item_id, :item_amount)", {
+        await pool.execute("INSERT INTO `places_products`(place_id, item_id, item_amount, item_price) VALUES(:place_id, :item_id, :item_amount, :item_price)", {
             place_id: obj.place_id,
             item_id: obj.item_id,
             item_amount: obj.item_amount,
+            item_price: obj.item_price,
+           
         });
 
     }
