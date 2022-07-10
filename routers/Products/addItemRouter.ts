@@ -4,6 +4,8 @@ import {AdRecordItem} from "../../records/AddRecordItem";
 
 export const addItemRouter = Router()
     .get('/add-new-item', async (req, res) => {
+        // const test = await AdRecordItem.findRelation();
+        // console.log(test)
         const data = await AdRecordItem.getOneItem('xxx-xxx');
         res.json({
             message: data
