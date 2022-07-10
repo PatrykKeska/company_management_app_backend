@@ -4,7 +4,8 @@ import {pool} from "../utils/dbConnection";
 import {FieldPacket} from "mysql2";
 import {v4 as uuid} from "uuid";
 
-type AdRecordResults = [AdRecordItem[], FieldPacket[]];
+type AdRecordResults = [AdEntityItem[], FieldPacket[]];
+
 
 export class AdRecordItem implements AdEntityItem {
     public id?: string;
@@ -62,12 +63,12 @@ export class AdRecordItem implements AdEntityItem {
     }
 
 
-    static async getOneItem(id: string): Promise<AdRecordItem>{
+    static async getOneItem(id: string): Promise<AdRecordItem> {
 
         const [results] = await pool.execute("SELECT * FROM `products` WHERE id=:id", {
             id,
         }) as AdRecordResults
-        return   new AdRecordItem(results[0])
+        return new AdRecordItem(results[0])
 
     }
 
@@ -98,13 +99,18 @@ export class AdRecordItem implements AdEntityItem {
         })
     }
 
-
     static async deleteProduct(id: string) {
 
+
+        await pool.execute("SET FOREIGN_KEY_CHECKS=0");
         await pool.execute("DELETE FROM `products` WHERE id=:id", {
             id
         })
+        await pool.execute(' SET FOREIGN_KEY_CHECKS=1 ');
+
     }
+
+  
 
     // @TODo Create  methods for handle Update and Delete Item !
 
