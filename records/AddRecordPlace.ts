@@ -84,9 +84,10 @@ export class AddRecordPlace implements AdEntityPlace {
     }
 
     static async deletePlace(id: string) {
-
+        await pool.execute("SET FOREIGN_KEY_CHECKS=0");
         await pool.execute("DELETE FROM `places` WHERE id=:id", {
             id
         })
+        await pool.execute(' SET FOREIGN_KEY_CHECKS=1 ');
     }
 }
