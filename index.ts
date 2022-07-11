@@ -1,4 +1,4 @@
-import express, {json} from "express";
+import express, {json, Router} from "express";
 import cors from 'cors';
 import {handleError} from "./utils/errors";
 import {addItemRouter} from "./routers/Products/addItemRouter";
@@ -23,14 +23,16 @@ app.use(cors({
 app.use(cookieParser());
 app.use(express.static(__dirname + '/public'));
 app.use(json());
-app.use('/', homeRouter);
-app.use('/', addItemRouter);
-app.use('/', storageRouter);
-app.use('/', addPlaceRouter);
-app.use('/', placesRouter);
-app.use('/', inventoryRouter);
-app.use('/', FinalizedRouter);
-app.use('/',FileTransfrerRouter);
+const router = Router();
+router.use('/',homeRouter)
+router.use('/',addItemRouter)
+router.use('/',storageRouter)
+router.use('/',addPlaceRouter)
+router.use('/',placesRouter)
+router.use('/',inventoryRouter)
+router.use('/',FinalizedRouter)
+router.use('/',FileTransfrerRouter)
+app.use('/api', router);
 
 
 
