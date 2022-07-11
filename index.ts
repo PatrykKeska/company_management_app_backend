@@ -10,6 +10,7 @@ import {inventoryRouter} from "./routers/inventory/inventory.router";
 import { FinalizedRouter } from "./routers/finalized/Finalized.router";
 import path from "path";
 import { FileTransfrerRouter } from "./routers/FileTransfrer.Router";
+import { corsOrigin } from "./utils/cors";
 const cookieParser = require('cookie-parser');
 
 
@@ -17,7 +18,7 @@ const cookieParser = require('cookie-parser');
 
 const app = express();
 app.use(cors({
-    origin: "http://localhost:3000",
+    origin: corsOrigin,
     credentials: true,
 }));
 app.use(cookieParser());
