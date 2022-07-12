@@ -7,13 +7,11 @@ import {storageRouter} from "./routers/Products/storageRouter";
 import {placesRouter} from "./routers/Places/placesRouter";
 import {homeRouter} from "./routers/homePage/home.router";
 import {inventoryRouter} from "./routers/inventory/inventory.router";
-import { FinalizedRouter } from "./routers/finalized/Finalized.router";
+import {FinalizedRouter} from "./routers/finalized/Finalized.router";
 import path from "path";
-import { FileTransfrerRouter } from "./routers/FileTransfrer.Router";
-import { corsOrigin } from "./utils/cors";
+import {FileTransfrerRouter} from "./routers/FileTransfrer.Router";
+import {corsOrigin} from "./utils/cors";
 const cookieParser = require('cookie-parser');
-
-
 
 
 const app = express();
@@ -25,17 +23,15 @@ app.use(cookieParser());
 app.use(express.static(__dirname + '/public'));
 app.use(json());
 const router = Router();
-router.use('/',homeRouter)
-router.use('/',addItemRouter)
-router.use('/',storageRouter)
-router.use('/',addPlaceRouter)
-router.use('/',placesRouter)
-router.use('/',inventoryRouter)
-router.use('/',FinalizedRouter)
-router.use('/',FileTransfrerRouter)
+router.use('/', homeRouter)
+router.use('/', addItemRouter)
+router.use('/', storageRouter)
+router.use('/', addPlaceRouter)
+router.use('/', placesRouter)
+router.use('/', inventoryRouter)
+router.use('/', FinalizedRouter)
+router.use('/', FileTransfrerRouter)
 app.use('/api', router);
-
-
 
 
 app.use(handleError)

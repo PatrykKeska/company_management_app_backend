@@ -10,9 +10,9 @@ export const homeRouter = Router()
     .post('/', async (req, res) => {
         const {login, password} = req.body;
         if (login === user.loginBE && password === user.passwordBE) {
-
             res.json(
-                {auth: true,
+                {
+                    auth: true,
                 }
             )
         }
