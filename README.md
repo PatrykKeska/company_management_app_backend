@@ -59,13 +59,14 @@ Maybe you can mention me or this repo in the acknowledgements too
 ### :camera: Screenshots
 
 
-  <img src="src/assets%20/readme/S2.jpeg" alt="screenshot" />
-  <img src="src/assets%20/readme/S3.jpeg" alt="screenshot" />
-  <img src="src/assets%20/readme/S4.jpeg" alt="screenshot" />
-  <img src="src/assets%20/readme/S5.jpeg" alt="screenshot" />
-  <img src="src/assets%20/readme/S6.jpeg" alt="screenshot" />
-  <img src="src/assets%20/readme/S7.jpeg" alt="screenshot" />
-  <img src="src/assets%20/readme/S8.jpeg" alt="screenshot" />
+  <img src="./images/S1.jpeg" alt="screenshot" />
+  <img src="./images/S2.jpeg" alt="screenshot" />
+  <img src="./images/S3.jpeg" alt="screenshot" />
+  <img src="./images/S4.jpeg" alt="screenshot" />
+  <img src="./images/S5.jpeg" alt="screenshot" />
+  <img src="./images/S6.jpeg" alt="screenshot" />
+  <img src="./images/S7.jpeg" alt="screenshot" />
+  <img src="./images/S8.jpeg" alt="screenshot" />
 
 </div>
 
@@ -142,10 +143,9 @@ Check the Roadmap to find an incoming features!
 
 
 <h3>To run locally make sure backend is listening and database is implemented correctly. 
-More information about database setup and backend  going to find out in backend repo here : </br> https://github.com/PatrykKeska/company_management_app_backend</h3>
 
-<h3>Login : admin </br> 
-Password : admin</h3> 
+
+<h3>Preview Login and Password is : "admin"</br></h3> 
 
 
 <!-- Getting Started -->
