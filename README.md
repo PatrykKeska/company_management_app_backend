@@ -51,24 +51,14 @@ Maybe you can mention me or this repo in the acknowledgements too
 <br/>* Check roadmap to see an incoming changes...
 <br/>* Check the features to see implemented functionalities.
 <br/>* Preview available(Login and password : admin) : https://patrykkeska.networkmanager.pl
-<br/>* Backend Repo : https://github.com/PatrykKeska/company_management_app_backend
+<br/>* Frontend Repo : https://github.com/PatrykKeska/company_management_app_front
 <br/>* DataBase file for Import purpose  : https://github.com/PatrykKeska/company_management_app_backend/tree/main/DataBaseScheme
-<br/> <h3> how are the components arranged?</h3>
-
-* I was   following something like Atomic Design which means smaller parts of code combine for bigger parts and finally reach whole Page view.
-
-* In Components directory there are smallest components.
-
-* In Layout Directory there are combined components.
-In result we got kind of views ready to implements on pages.
-
-* In Pages there are Implemented Layouts with Some extra components like Wrapper or Nav
+<h2>Please Check Frontend repo to find out more about it :)</h2></br>
 
 <!-- Screenshots -->
 ### :camera: Screenshots
 
-<div align="center"> 
-  <img src="src/assets%20/readme/S1.jpeg" alt="screenshot" />
+
   <img src="src/assets%20/readme/S2.jpeg" alt="screenshot" />
   <img src="src/assets%20/readme/S3.jpeg" alt="screenshot" />
   <img src="src/assets%20/readme/S4.jpeg" alt="screenshot" />
@@ -76,9 +66,8 @@ In result we got kind of views ready to implements on pages.
   <img src="src/assets%20/readme/S6.jpeg" alt="screenshot" />
   <img src="src/assets%20/readme/S7.jpeg" alt="screenshot" />
   <img src="src/assets%20/readme/S8.jpeg" alt="screenshot" />
-  
-</div>
 
+</div>
 
 <!-- TechStack -->
 ### :space_invader: Tech Stack
@@ -141,6 +130,16 @@ Check the Roadmap to find an incoming features!
 
 <!-- Env Variables -->
 ### :key: Environment Variables
+* In utils/cors.ts file please set correct path to let client side connect with API 
+<div align="center"> 
+
+  <img src="./images/Cors.jpeg" alt="screenshot" />
+
+* In utils/Dbconfig and DbConnection please make sure your database variables are correct!
+  <img src="./images/DbCon.jpeg" alt="screenshot" />
+  <img src="./images/DbConfig.jpeg" alt="screenshot" />
+
+
 
 <h3>To run locally make sure backend is listening and database is implemented correctly. 
 More information about database setup and backend  going to find out in backend repo here : </br> https://github.com/PatrykKeska/company_management_app_backend</h3>
@@ -178,13 +177,13 @@ Install my-project with npm
 Clone the project
 
 ```bash
-  git clone https://github.com/PatrykKeska/company_management_app_front.git
+  git clone https://github.com/PatrykKeska/company_management_app_backend.git
 ```
 
 Go to the project directory
 
 ```bash
-  cd company_management_app_front
+  cd company_management_app_backend
 ```
 
 Install dependencies
@@ -196,7 +195,7 @@ Install dependencies
 Start the server
 
 ```bash
-  yarn start
+  yarn start:dev
 ```
 
 
